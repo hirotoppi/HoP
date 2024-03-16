@@ -27,7 +27,7 @@ RUN sed -i s:/archive.ubuntu.com:/mirrors.tuna.tsinghua.edu.cn/ubuntu:g /etc/apt
 RUN cat /etc/apt/sources.list
 RUN chmod 777 /tmp
 RUN apt-get clean && apt-get update &&\
-    apt-get install -y vim libsm6 libxext6 libxrender-dev libgl1-mesa-glx git wget libssl-dev libopencv-dev libspdlog-dev --no-install-recommends &&\
+    apt-get install -y vim libc6 libsm6 libxext6 libxrender-dev libgl1-mesa-glx git wget libssl-dev libopencv-dev libspdlog-dev --no-install-recommends &&\
     rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL -v -o ~/miniconda.sh -O  https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
@@ -103,7 +103,7 @@ RUN pip install mmdet==2.25.1 mmsegmentation==0.25.0  -i https://pypi.tuna.tsing
 RUN pip install pycuda \
     lyft_dataset_sdk \
     networkx==2.2 \
-    numba==0.53.0 \
+    numba \
     numpy \
     nuscenes-devkit \
     plyfile \
@@ -111,3 +111,4 @@ RUN pip install pycuda \
     tensorboard \
     trimesh==2.35.39 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
+# numba==0.53.0
